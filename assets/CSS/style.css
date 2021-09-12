@@ -13,11 +13,19 @@ body {
 header {
     display: flex;
     padding: 10px;
+    width: 80%;
+    justify-content: space-between;
 
 }
 
 header h1 {
-    justify-content: flex-start;
+    
+    font-size: 12px;
+    color: purple;
+}
+
+header p {
+    
     font-size: 12px;
     color: purple;
 }
@@ -25,7 +33,7 @@ header h1 {
 main {
     margin: 0 auto;
     padding: 50px;
-    width: 100%;
+    width: 80%;
     
 }
 
@@ -39,7 +47,12 @@ main p {
     width: 50%;
 }
 
-.btn {
+.start-btn {
     padding: 10px;
+
+}
+
+#quiz {
+    display: none;
 
 }
