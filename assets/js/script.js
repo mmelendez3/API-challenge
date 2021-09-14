@@ -1,6 +1,7 @@
 const start = document.querySelector("#start")
 const container = document.querySelector("#container")
 const quiz = document.querySelector("#quiz")
+    quiz.style.display = "none"
 const question = document.querySelector("#question")
 const choices = document.querySelector("#choices")
 
@@ -38,7 +39,7 @@ let questions = [
 
     },
     {
-        question: "String values must be enclosed within    when being assigned to variables:",
+        question: "String values must be enclosed within when being assigned to variables:",
         choiceA: "A. commas",
         choiceB: "B. curly brackets",
         choiceC: "C. quotes",
@@ -86,14 +87,8 @@ function renderQuestion() {
     choiceD.innerHTML = q.choiceD
 
 }
-
-    //start.style.display = "none"
-    //runningQuestionIndex = 0
-    //renderQuestion()
-
-    //runningQuestionIndex++
     renderQuestion()
-    //quiz.style.display = "block"
+    
 
 let score = 0
 function checkAnswer (answer) {
@@ -103,7 +98,7 @@ function checkAnswer (answer) {
         answerIsWrong()
     }
     if(runningQuestionIndex< lastQuestionIndex){
-        count = 0
+        //count = 0
         runningQuestionIndex++
         renderQuestion()
     }

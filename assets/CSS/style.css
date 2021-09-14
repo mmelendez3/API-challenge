@@ -47,12 +47,33 @@ main p {
     width: 50%;
 }
 
-.start-btn {
-    padding: 10px;
-
+.title {
+    
 }
 
-#quiz {
-    display: none;
+#start  {
+    font-size: 20px;
+    background-color: purple;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    width: 20%;
+    cursor: pointer;
+    padding: 10px 10px 10px 10px;
+}
 
+#question {
+    font-size: 22px;
+    font-weight: 100;
+}
+.choice {
+    font-size: 20px;
+    background-color: purple;
+    color: white;
+    border-radius: 10px;
+    text-align: justify;
+    width: 35%;
+    padding: 10px 10px 10px 10px;
+    margin: 5px;
+    cursor: pointer;
 }
