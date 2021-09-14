@@ -1,4 +1,5 @@
-const startQuiz = document.querySelector("#start-btn")
+const start = document.querySelector("#start")
+const container = document.querySelector("#container")
 const quiz = document.querySelector("#quiz")
 const question = document.querySelector("#question")
 const choices = document.querySelector("#choices")
@@ -15,7 +16,7 @@ let questions = [
         choiceB: "B. booleans",
         choiceC: "C. alerts",
         choiceD: "D. numbers",
-        correct: "A"
+        correct: "C"
 
     },
     {
@@ -60,16 +61,53 @@ let questions = [
 
 
 
+//start quiz
+start.addEventListener("click", startQuiz)
 
-startQuiz.addEventListener("click", startGame)
+function startQuiz(){
+    container.style.display = "none"
+    renderQuestion()
+    quiz.style.display = "block"
+}
 
-function startGame(){
-    console.log('started')
-    
+
+
+let lastQuestionIndex = questions.length-1
+let runningQuestionIndex = 0
+
+//render a question
+function renderQuestion() {
+    let q = questions[runningQuestionIndex]
+
+    question.innerHTML = "<p>" + q.question + "</p>"
+    choiceA.innerHTML = q.choiceA
+    choiceB.innerHTML = q.choiceB
+    choiceC.innerHTML = q.choiceC
+    choiceD.innerHTML = q.choiceD
+
+}
+
+    //start.style.display = "none"
+    //runningQuestionIndex = 0
+    //renderQuestion()
+
+    //runningQuestionIndex++
+    renderQuestion()
+    //quiz.style.display = "block"
+
+let score = 0
+function checkAnswer (answer) {
+    if (questions[runningQuestionIndex].correct == answer){
+        score++
+    }else{
+        answerIsWrong()
+    }
+    if(runningQuestionIndex< lastQuestionIndex){
+        count = 0
+        runningQuestionIndex++
+        renderQuestion()
+    }
 
 
 }
 
-function selectAnswer(){
-
-}
