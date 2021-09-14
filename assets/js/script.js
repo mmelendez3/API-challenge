@@ -9,6 +9,8 @@ const choiceA = document.querySelector("#A")
 const choiceB = document.querySelector("#B")
 const choiceC = document.querySelector("#C")
 const choiceD = document.querySelector("#D")
+var countdown = document.querySelector("#countdown")
+
 
 let questions = [
     {
@@ -61,6 +63,11 @@ let questions = [
 ]
 
 
+var timeleft = 100;
+
+
+
+
 
 //start quiz
 start.addEventListener("click", startQuiz)
@@ -69,7 +76,20 @@ function startQuiz(){
     container.style.display = "none"
     renderQuestion()
     quiz.style.display = "block"
+    
+    var timer = setInterval(function(){
+        if(timeleft <= 0){
+          clearInterval(timer);
+          countdown.innerHTML = "Finished";
+        } else {
+          countdown.innerHTML = timeleft + " seconds remaining";
+        }
+        timeleft -= 1;
+      }, 1000);
+    
 }
+
+
 
 
 
@@ -105,4 +125,6 @@ function checkAnswer (answer) {
 
 
 }
+
+
 
