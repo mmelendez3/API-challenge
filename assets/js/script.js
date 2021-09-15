@@ -4,6 +4,11 @@ const quiz = document.querySelector("#quiz")
     quiz.style.display = "none"
 const question = document.querySelector("#question")
 const choices = document.querySelector("#choices")
+const scoreContainer = document.querySelector("#scoreContainer")
+    scoreContainer.style.display = "none"
+const result = document.querySelector("#result")
+const endGameContainer = document.querySelector("#endGameContainer")
+    endGameContainer.style.display = "none"
 
 const choiceA = document.querySelector("#A")
 const choiceB = document.querySelector("#B")
@@ -63,8 +68,8 @@ let questions = [
 ]
 
 
-var timeleft = 100;
-
+var timeleft = 10;
+let timer
 
 
 
@@ -76,18 +81,28 @@ function startQuiz(){
     container.style.display = "none"
     renderQuestion()
     quiz.style.display = "block"
+    counterRender()
+    timer = setInterval (counterRender,1000)
     
-    var timer = setInterval(function(){
-        if(timeleft <= 0){
-          clearInterval(timer);
-          countdown.innerHTML = "Finished";
-        } else {
-          countdown.innerHTML = timeleft + " seconds remaining";
-        }
-        timeleft -= 1;
-      }, 1000);
+   
+    
     
 }
+
+function counterRender(){
+    if(timeleft <= 0){
+        clearInterval(timer);
+        countdown.innerHTML = timeleft
+    } else {
+        countdown.innerHTML = timeleft + " seconds remaining";
+        }
+        timeleft -= 1;
+      
+
+
+}
+
+
 
 
 
@@ -107,23 +122,33 @@ function renderQuestion() {
     choiceD.innerHTML = q.choiceD
 
 }
-    renderQuestion()
+    //renderQuestion()
     
 
 let score = 0
 function checkAnswer (answer) {
     if (questions[runningQuestionIndex].correct == answer){
-        score++
+        answerIsCorrect()
     }else{
         answerIsWrong()
     }
-    if(runningQuestionIndex< lastQuestionIndex){
-        //count = 0
+    if(runningQuestionIndex < lastQuestionIndex){
         runningQuestionIndex++
         renderQuestion()
+    }else{
+        clearInterval(timer)
     }
 
 
+}
+
+function answerIsCorrect(){
+    result.textContent = "Correct"
+
+}
+
+function answerIsWrong(){
+    result.textContent = "Wrong"
 }
 
 
