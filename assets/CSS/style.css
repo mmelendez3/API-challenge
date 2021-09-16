@@ -66,7 +66,7 @@ main p {
     font-size: 22px;
     font-weight: 100;
 }
-.choice {
+.choice, .submit, #restart, #clearHighScore{
     font-size: 20px;
     background-color: purple;
     color: white;

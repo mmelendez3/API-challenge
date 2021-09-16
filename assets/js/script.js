@@ -15,6 +15,10 @@ const choiceB = document.querySelector("#B")
 const choiceC = document.querySelector("#C")
 const choiceD = document.querySelector("#D")
 var countdown = document.querySelector("#countdown")
+const number = document.querySelector("#number")
+const form = document.querySelector("#form")
+const submit = document.querySelector("#submit")
+const restart = document.querySelector("#restart")
 
 
 let questions = [
@@ -68,7 +72,7 @@ let questions = [
 ]
 
 
-var timeleft = 10;
+var timeleft = 95;
 let timer
 
 
@@ -125,18 +129,20 @@ function renderQuestion() {
     //renderQuestion()
     
 
-let score = 0
+
 function checkAnswer (answer) {
     if (questions[runningQuestionIndex].correct == answer){
         answerIsCorrect()
     }else{
         answerIsWrong()
+        timeleft-=10
     }
     if(runningQuestionIndex < lastQuestionIndex){
         runningQuestionIndex++
         renderQuestion()
     }else{
         clearInterval(timer)
+        scoreRender()
     }
 
 
@@ -151,5 +157,15 @@ function answerIsWrong(){
     result.textContent = "Wrong"
 }
 
+function scoreRender(){
+    scoreContainer.style.display = "block"
+    quiz.style.display = "none"
+    number.innerHTML = timeleft+1
+}
 
+submit.addEventListener("click", endQuiz)
 
+function endQuiz(){
+    endGameContainer.style.display = "block"
+    scoreContainer.style.display = "none"
+}

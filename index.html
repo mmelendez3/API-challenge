@@ -43,16 +43,22 @@
         <div id="scoreContainer">
             
             <div><h1 class="final-title">All Done</h1></div>
-            <div><p>Your final score is</p></div>
-            <div><form action=""></form></div>
+            <div>Your final score is<span id="number"></span></div>
+            <div id="form">Enter Initials
+                <input type="text" name="initials">
+                <div class="submit" id="submit" onclick="">Submit</div>
+            </div>
 
         </div>
 
         <div id="endGameContainer">
             
-            <div id="score"></div>
-            <div id="restart">Restart Game</div>
-            <div id="clearHighScore">Clear high score</div>
+            <div id="score">High Scores</div>
+            <div><section>
+                <ul></ul>
+            </section></div>
+            <div id="restart" onclick="">Restart Game</div>
+            <div id="clearHighScore" onclick="">Clear high score</div>
 
         </div>
         
