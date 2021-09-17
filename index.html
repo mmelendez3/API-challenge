@@ -9,11 +9,13 @@
 </head>
 
 <body>
-    <header>
-        <h1>View high scores</h1>
-        <p id="countdown">Time</p>
-    </header>
-    
+   <div id="header">
+       <header>
+            <h1 id="viewScores">View high scores</h1>
+            <p id="countdown">Time</p>
+        </header>
+    </div>
+   
     <main>
         
         <div id="container">
@@ -43,9 +45,9 @@
         <div id="scoreContainer">
             
             <div><h1 class="final-title">All Done</h1></div>
-            <div>Your final score is<span id="number"></span></div>
+            <div class="final-score">Your final score is<span id="number"></span></div>
             <div id="form">Enter Initials
-                <input type="text" name="initials">
+                <input type="text" name="initials" id="initials">
                 <div class="submit" id="submit" onclick="">Submit</div>
             </div>
 
@@ -54,9 +56,9 @@
         <div id="endGameContainer">
             
             <div id="score">High Scores</div>
-            <div><section>
-                <ul></ul>
-            </section></div>
+            <div id="theHighScore">
+                
+            </div>
             <div id="restart" onclick="">Restart Game</div>
             <div id="clearHighScore" onclick="">Clear high score</div>
 

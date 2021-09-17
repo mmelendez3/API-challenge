@@ -9,6 +9,13 @@ const scoreContainer = document.querySelector("#scoreContainer")
 const result = document.querySelector("#result")
 const endGameContainer = document.querySelector("#endGameContainer")
     endGameContainer.style.display = "none"
+var initials = document.querySelector("#initials")
+const clearHighScore = document.querySelector("#clearHighScore")
+const orderedList = document.querySelector("#ordered-list")
+const theHighScore = document.querySelector("#theHighScore")
+var taskIdCounter =0
+const header = document.querySelector("#header")
+const viewScore = document.querySelector("#viewScores")
 
 const choiceA = document.querySelector("#A")
 const choiceB = document.querySelector("#B")
@@ -72,8 +79,20 @@ let questions = [
 ]
 
 
+viewScore.addEventListener("click", viewScores)
+function viewScores(){
+container.style.display = "none"
+quiz.style.display="none"
+endGameContainer.style.display = "block"
+}
+
+
+
+
+
 var timeleft = 95;
 let timer
+
 
 
 
@@ -100,7 +119,7 @@ function counterRender(){
     } else {
         countdown.innerHTML = timeleft + " seconds remaining";
         }
-        timeleft -= 1;
+        timeleft--;
       
 
 
@@ -165,7 +184,71 @@ function scoreRender(){
 
 submit.addEventListener("click", endQuiz)
 
+
+    
 function endQuiz(){
     endGameContainer.style.display = "block"
     scoreContainer.style.display = "none"
+    header.style.display = "none"
+    var highScore = document.querySelector("#theHighScore")
+    var name = initials.value
+    var score = timeleft+1  
+    
+
+    if (!name) {
+        alert("Please Enter Your Initials")
+        scoreContainer.style.display = "block"
+        endGameContainer.style.display = "none"
+    }
+    
+var scoreDataObj = {
+    name: initials.value,
+    score: timeleft+1
+}
+
+var highScores = []
+   
+// var createScoreList = function(ScoreDataObj){
+// var listItemEl = document.createElement("li")
+// listItemEl.className = "scores"
+// listItemEl.setAttribute("score-id", taskIdCounter)
+// orderedList.appendChild(listItemEl)
+// console.log(orderedList)
+
+
+//  "score-id".id = taskIdCounter
+ 
+
+//  taskIdCounter++
+//  console.log(taskIdCounter)
+//listEl = document.querySelector("#list")
+
+
+
+  highScores = JSON.parse(localStorage.getItem("scoreInfo")) || []
+  highScores.push(scoreDataObj)
+  
+  
+  localStorage.setItem("scoreInfo", JSON.stringify(highScores))
+
+  theHighScore.textContent = highScores
+}
+    //createScoreList()
+
+
+
+
+
+restart.addEventListener("click", restartQuiz)
+
+function restartQuiz(){
+    endGameContainer.style.display = "none"
+    
+    location.reload()
+}
+
+clearHighScore.addEventListener("click", clearStorage)
+
+function clearStorage(){
+    localStorage.clear()
 }

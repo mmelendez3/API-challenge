@@ -77,3 +77,46 @@ main p {
     margin: 5px;
     cursor: pointer;
 }
+
+#container, #quiz, #scoreContainer {
+    border: solid 1px black;
+    padding: 45px;
+    width: 65%;
+}
+
+#choices {
+    border-bottom: solid 1px gray;
+    padding-bottom: 15px;
+}
+
+#result {
+    padding: 2px;
+    font-style: italic;
+    color: rgb(132, 139, 138)
+}
+
+.final-score {
+    padding: 5px 0px 5px 0px
+}
+
+#form {
+    padding: 5px 0px 5px 0px
+}
+
+#submit {
+    margin-top: 15px;
+}
+
+#score {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#theHighScore{
+    background-color: rgb(238, 213, 213);
+    width: 35%;
+    padding: 10px;
+    margin: 0px;
+}
+
+
