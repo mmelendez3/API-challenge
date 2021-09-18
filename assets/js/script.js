@@ -198,11 +198,14 @@ function endQuiz(){
     const highScoresList = document.getElementById("highScoresList")
     const highScore = JSON.parse(localStorage.getItem("highscores")) || []
     
+    const MAX_HIGH_SCORES =5
+
+
 
     highScore.push(scoreDataObj)
-    console.log(highScore)
+    highScore.sort( (a,b) => b.score - a.score)
     
-
+    highScore.splice(5)
     if (!name) {
         alert("Please Enter Your Initials")
         scoreContainer.style.display = "block"
@@ -249,6 +252,7 @@ quiz.style.display="none"
 endGameContainer.style.display = "block"
 header.style.display = "none"
 
+
 var name = initials.value
 var score = timeleft+1  
 var scoreDataObj = {
@@ -259,9 +263,14 @@ var scoreDataObj = {
 const highScoresList = document.getElementById("highScoresList")
 const highScore = JSON.parse(localStorage.getItem("highscores")) || []
 
+const MAX_HIGH_SCORES =5
 
-highScore.push(scoreDataObj)
-console.log(highScore)
+
+
+   
+    highScore.sort( (a,b) => b.score - a.score)
+
+
 
 highScoresList.innerHTML = highScore
     .map(score => {
