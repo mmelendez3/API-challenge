@@ -11,9 +11,9 @@ const endGameContainer = document.querySelector("#endGameContainer")
     endGameContainer.style.display = "none"
 var initials = document.querySelector("#initials")
 const clearHighScore = document.querySelector("#clearHighScore")
-const orderedList = document.querySelector("#ordered-list")
+// const orderedList = document.querySelector("#ordered-list")
 const theHighScore = document.querySelector("#theHighScore")
-var taskIdCounter =0
+// var taskIdCounter =0
 const header = document.querySelector("#header")
 const viewScore = document.querySelector("#viewScores")
 
@@ -79,12 +79,7 @@ let questions = [
 ]
 
 
-viewScore.addEventListener("click", viewScores)
-function viewScores(){
-container.style.display = "none"
-quiz.style.display="none"
-endGameContainer.style.display = "block"
-}
+
 
 
 
@@ -190,9 +185,22 @@ function endQuiz(){
     endGameContainer.style.display = "block"
     scoreContainer.style.display = "none"
     header.style.display = "none"
-    var highScore = document.querySelector("#theHighScore")
+    //var highScore = document.querySelector("#theHighScore")
     var name = initials.value
     var score = timeleft+1  
+    var scoreDataObj = {
+        name: initials.value,
+        score: timeleft+1
+    }
+    
+    
+    
+    const highScoresList = document.getElementById("highScoresList")
+    const highScore = JSON.parse(localStorage.getItem("highscores")) || []
+    
+
+    highScore.push(scoreDataObj)
+    console.log(highScore)
     
 
     if (!name) {
@@ -200,41 +208,22 @@ function endQuiz(){
         scoreContainer.style.display = "block"
         endGameContainer.style.display = "none"
     }
-    
-var scoreDataObj = {
-    name: initials.value,
-    score: timeleft+1
-}
-
-var highScores = []
    
-// var createScoreList = function(ScoreDataObj){
-// var listItemEl = document.createElement("li")
-// listItemEl.className = "scores"
-// listItemEl.setAttribute("score-id", taskIdCounter)
-// orderedList.appendChild(listItemEl)
-// console.log(orderedList)
+   
 
-
-//  "score-id".id = taskIdCounter
- 
-
-//  taskIdCounter++
-//  console.log(taskIdCounter)
-//listEl = document.querySelector("#list")
-
-
-
-  highScores = JSON.parse(localStorage.getItem("scoreInfo")) || []
-  highScores.push(scoreDataObj)
-  
-  
-  localStorage.setItem("scoreInfo", JSON.stringify(highScores))
-
-  theHighScore.textContent = highScores
+    localStorage.setItem("highscores", JSON.stringify(highScore))
+    
+    highScoresList.innerHTML = highScore
+    .map(score => {
+        return `<li class="high-score">${score.name}-${score.score}</li>`
+    })
+    .join("")
 }
-    //createScoreList()
 
+
+
+
+    
 
 
 
@@ -251,4 +240,32 @@ clearHighScore.addEventListener("click", clearStorage)
 
 function clearStorage(){
     localStorage.clear()
+}
+
+viewScore.addEventListener("click", viewScores)
+function viewScores(){
+container.style.display = "none"
+quiz.style.display="none"
+endGameContainer.style.display = "block"
+header.style.display = "none"
+
+var name = initials.value
+var score = timeleft+1  
+var scoreDataObj = {
+    name: initials.value,
+    score: timeleft+1
+}
+
+const highScoresList = document.getElementById("highScoresList")
+const highScore = JSON.parse(localStorage.getItem("highscores")) || []
+
+
+highScore.push(scoreDataObj)
+console.log(highScore)
+
+highScoresList.innerHTML = highScore
+    .map(score => {
+        return `<li class="high-score">${score.name}-${score.score}</li>`
+    })
+    .join("")
 }
