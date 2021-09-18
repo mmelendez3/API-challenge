@@ -14,4 +14,10 @@
 
     4. created a high score section that would save name and score as an array and then pull and display high scores from highest to lowest.  I used methods such as "sort", "map", and "splice" in order to accomplish this.
 
-    5. created a repository on GitHub at URL 
+    5. created a repository on GitHub at URL https://github.com/mmelendez3/API-challenge
+
+    6. This is the address of the live URL https://mmelendez3.github.io/API-challenge/
+
+    7. Here is a screenshot of the finished website.
+
+        - ![](./assets/images/API_quiz.png "API Code Quiz")
